@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* optional animations plugin (only if installed) */
+/* @import "tw-animate-css"; */
+
+/* Base theme variables */
+:root {
+  --radius: 0.625rem;
+}
+
+/* Dark mode support */
+.dark {
+}
+
+/* Your custom global styles */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}

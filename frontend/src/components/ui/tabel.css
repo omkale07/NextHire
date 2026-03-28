@@ -1,0 +1,45 @@
+.tbl-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tbl-head {
+  background: #f4f6f8;
+}
+
+.tbl-th {
+  text-align: left;
+  padding: 10px;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tbl-row {
+  transition: background 0.2s ease;
+}
+
+.tbl-row:hover {
+  background: #f9fafb;
+}
+
+.tbl-td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tbl-foot {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+.tbl-caption {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 13px;
+}
