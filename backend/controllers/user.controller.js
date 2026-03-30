@@ -14,7 +14,7 @@ const register = async (req, res) => {
       });
     }
 
-  const file = req.file;      //cloudinary
+    const file = req.file; //cloudinary
     let cloudResponse;
 
     if (file) {
@@ -41,9 +41,9 @@ const register = async (req, res) => {
       phoneNumber,
       password: hashedPassword,
       role,
-      profile:{
-        profilePhoto: cloudResponse.secure_url
-      }
+      profile: {
+        profilePhoto: cloudResponse.secure_url,
+      },
     });
 
     return res.status(201).json({
@@ -111,7 +111,7 @@ const login = async (req, res) => {
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        secure : true,
+        secure: true,
         sameSite: "none",
       })
       .json({
@@ -126,10 +126,18 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-      message: "Logged out successfully",
-      success: true,
-    });
+    return res
+      .status(200)
+      .cookie("token", "", {
+        maxAge: 0,
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
+      .json({
+        message: "Logged out successfully",
+        success: true,
+      });
   } catch (error) {
     console.log(error);
   }
@@ -138,7 +146,7 @@ const logout = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
-    const file = req.file;      //cloudinary
+    const file = req.file; //cloudinary
     let cloudResponse;
 
     if (file) {
@@ -149,7 +157,6 @@ const updateProfile = async (req, res) => {
       });
     }
 
- 
     let skillsArray;
     if (skills) {
       try {
