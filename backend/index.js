@@ -22,7 +22,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 
 //middleware
 app.use(express.json())
