@@ -22,8 +22,8 @@ export default function Job(props) {
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-linear-to-br from-cyan-50 to-blue-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300">
             <img
-              src={job.company.logo}
-              alt={job.company.name}
+              src={job?.company?.logo}
+              alt={job?.company?.name}
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -83,8 +83,7 @@ export default function Job(props) {
 
       {/* Description */}
       <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3">
-        {job?.description ||
-          "We are looking for a passionate developer to join our team and work on modern scalable applications using latest technologies."}
+        {job?.description || "NA"}
       </p>
 
       {/* Buttons Row */}

@@ -12,7 +12,7 @@ const Jobs = () => {
   const {filterJobs} = useSelector(store=>store.job); 
   const [filterData, setFilterData] = useState(allJobs);
 
-  const salaryRange = filterJobs.Salary;
+  const salaryRange = filterJobs?.Salary;
 
   const salaryMap = {
   "0-3 LPA": [0, 3],
@@ -28,7 +28,7 @@ const [min, max] = salaryMap[salaryRange] || [0, Infinity];
 useEffect(() => {
   if (filterJobs) {
     const filteredData = allJobs.filter((job) => {
-      const jobSalary = parseInt(job.salary) || 0;
+      const jobSalary = parseInt(job?.salary) || 0;
       const industry = filterJobs.Industry?.toLowerCase() || "";
       const location = filterJobs.Location?.toLowerCase() || "";
 
