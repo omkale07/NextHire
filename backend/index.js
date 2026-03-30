@@ -20,7 +20,7 @@ app.use(cookieParser())
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://next-hire-iqnpvh6z6-okale753-4830s-projects.vercel.app"
+    "https://next-hire-8grpdw7mk-okale753-4830s-projects.vercel.app"
   ],
   credentials: true
 };
