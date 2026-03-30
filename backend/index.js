@@ -12,20 +12,21 @@ dotEnv.config({})
 
 const app = express();
 
-//middleware
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-app.use(cookieParser())
-
+//cors
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://next-hire-8grpdw7mk-okale753-4830s-projects.vercel.app"
+    "https://next-hire-lyart.vercel.app"
   ],
   credentials: true
 };
 
 app.use(cors(corsOptions));
+
+//middleware
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
 
 
 app.get('/home',(req,res)=>{
