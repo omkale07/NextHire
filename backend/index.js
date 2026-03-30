@@ -18,19 +18,10 @@ app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "http://localhost:5173",
-      "https://next-hire-iqnpvh6z6-okale753-4830s-projects.vercel.app"
-    ];
-
-    // allow requests with no origin (like Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, true); // allow all for now
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "https://next-hire-iqnpvh6z6-okale753-4830s-projects.vercel.app"
+  ],
   credentials: true
 };
 
