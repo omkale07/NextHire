@@ -66,18 +66,20 @@ export default function ApplicantDetails() {
 
   const getStatus = (app) => (statuses[app._id] || app.status || "pending").toLowerCase();
 
-  const filtered = applicants.application.filter((app) => {
-    const name = app.applicant?.fullname?.toLowerCase() || "";
-    const email = app.applicant?.email?.toLowerCase() || "";
-    const matchSearch = name.includes(search.toLowerCase()) || email.includes(search.toLowerCase());
-    const matchStatus = statusFilter === "All" || getStatus(app) === statusFilter.toLowerCase();
-    return matchSearch && matchStatus;
-  });
+  const applicationList = applicants?.application || [];
 
-  const total    = applicants.application.length;
-  const pending  = applicants.application.filter((a) => getStatus(a) === "pending").length;
-  const accepted = applicants.application.filter((a) => getStatus(a) === "accepted").length;
-  const rejected = applicants.application.filter((a) => getStatus(a) === "rejected").length;
+  const filtered = applicationList.filter((app) => {
+  const name = app.applicant?.fullname?.toLowerCase() || "";
+  const email = app.applicant?.email?.toLowerCase() || "";
+  const matchSearch = name.includes(search.toLowerCase()) || email.includes(search.toLowerCase());
+  const matchStatus = statusFilter === "All" || getStatus(app) === statusFilter.toLowerCase();
+  return matchSearch && matchStatus;
+});
+
+  const total    = applicationList.length;
+  const pending  = applicationList.filter((a) => getStatus(a) === "pending").length;
+  const accepted = applicationList.filter((a) => getStatus(a) === "accepted").length;
+  const rejected = applicationList.filter((a) => getStatus(a) === "rejected").length;
 
 
   const badgeClass = (s) => {
@@ -117,9 +119,9 @@ export default function ApplicantDetails() {
             <h1 className="text-3xl font-bold text-slate-800">Applications</h1>
             <p className="text-slate-500 mt-0.5 text-sm flex items-center space-x-1.5">
               <Building2 className="w-3.5 h-3.5" />
-              <span>{job.company.name}</span>
+              <span>{job?.company?.name || "Company"}</span>
               <span className="text-slate-300">·</span>
-              <span className="font-medium text-cyan-600">{job.title}</span>
+              <span className="font-medium text-cyan-600">{job?.title || "Job"}</span>
             </p>
           </div>
         </div>
@@ -356,7 +358,7 @@ export default function ApplicantDetails() {
           {/* Footer */}
           <div className="px-6 py-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
             <p className="text-xs text-slate-400">
-              Showing {filtered.length} of {applicants.application.length} applications
+              Showing {filtered.length} of {applicationList.length} applications
             </p>
             <div className="flex items-center space-x-4 text-xs text-slate-400">
               <span className="flex items-center space-x-1">
